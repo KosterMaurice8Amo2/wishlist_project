@@ -14,7 +14,8 @@
                         </div>
                     @endif
 
-                    You are logged in!
+                    See here all the wishes
+                    <a href="/wishes">Wishes</a>
                 </div>
             </div>
         </div>
