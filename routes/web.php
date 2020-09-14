@@ -19,4 +19,6 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/wish', 'HomeController@index')->name('home');
+Route::get('/wishes', 'wishesController@indexWishes');
+
+Route::post('wishes', 'wishesController@addWish');
