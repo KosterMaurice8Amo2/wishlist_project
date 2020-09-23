@@ -18,10 +18,12 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/main.css') }}" rel="stylesheet">
 </head>
-<body>
-    <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+<body class="text-center bg-dark bg-dark-shadow">
+    <div id="app" style="height: 100vh">
+        <div class="cover-container d-flex w-50 h-100 p-3 mx-auto flex-column">
+        {{-- <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Wishlist') }}
@@ -69,12 +71,31 @@
                         @endguest
                     </ul>
                 </div>
-            </div>
-        </nav>
+            </div> 
+        </nav> --}}
+        
+    @if (!empty(Auth::user()->name))
+    <header class="masthead mb-auto text-white">
+        <div class="inner ">
+          <h3 class="masthead-brand">{{ Auth::user()->name }}</h3>
+          <nav class="nav nav-masthead justify-content-center">
+            <a class="nav-link text-white" href="/">Home</a>
+            <a class="nav-link text-white" href="/wishes">Wish</a>
+            <a class="nav-link text-primary" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"> {{ __('Logout') }}</a>
+          </nav>
+        </div>
+      </header>
 
-        <main class="py-4">
-            @yield('content')
-        </main>
+        <form id="logout-form" action="{{ route('logout') }}" method="POST">
+            @csrf
+        </form>
+    @else
+    <header-component v-bind:username="'Wishlist'"></header-component>
+    @endif
+        @yield('content')
+        
+        <footer-component></footer-component>
     </div>
+</div>
 </body>
 </html>

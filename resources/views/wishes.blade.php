@@ -1,9 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+
 
 @if (!empty(Auth::id()))
+
 @foreach($wishes as $wish)
     <div class="card mb-3">
         <div class="card-body">
@@ -14,7 +15,6 @@
         </div>
     </div>
 @endforeach
-</div>
 <div class="container-fluid" style="margin-top: 4rem">
     <div role="tabpanel" class="tab-pane mt-4" id="wishes">
         <form method="POST" enctype="multipart/form-data">
@@ -44,8 +44,12 @@
     </div>
 </div>
 @else
-    <div class="input-group mb-3">
-        <span>Login om de wishes te bekijken / aan te maken</span>
+<main role="main" class="inner cover text-white">
+    <div >
+        <h1 class="cover-heading">U bent niet ingelogd</h1>
+        <p class="lead">Registreer / login om de wishes te bekijken</p>
+        <p class="lead"><a href="/register" class="btn btn-lg btn-secondary">Registreer</a></p>
     </div>
+</main>
 @endif
 @endsection

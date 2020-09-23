@@ -1,24 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Dashboard</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    See here all the wishes
-                    <a href="/wishes">Wishes</a>
-                </div>
-            </div>
+    <main role="main" class="inner cover text-white">
+        <div >
+            <h1 class="cover-heading">Cover your page.</h1>
+            <p class="lead">Cover is a one-page template for building simple and beautiful home pages. Download, edit the text, and add your own fullscreen background photo to make it your own.</p>
+            <p class="lead"><a href="#" class="btn btn-lg btn-secondary">Learn more</a></p>
         </div>
-    </div>
-</div>
+    </main>
+ 
 @endsection
