@@ -25,6 +25,10 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 Vue.component('header-component', require('./components/basic_ui/Header.vue').default);
 Vue.component('footer-component', require('./components/basic_ui/Footer.vue').default);
 
+Vue.component('wish-component', require('./components/wish.vue').default);
+Vue.component('user-component', require('./components/users.vue').default);
+
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

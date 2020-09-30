@@ -6,14 +6,15 @@
 @if (!empty(Auth::id()))
 
 @foreach($wishes as $wish)
-    <div class="card mb-3">
+    {{-- <div class="card mb-3">
         <div class="card-body">
             <h5 class="card-title">{{ $wish->wishname }}</h5>
             <h6 class="card-subtitle mb-2 text-muted">{{ $wish->wishtext }}</h6>
             <a href="{!! $wish->wishlink !!}" class="card-text">{{ $wish->wishlink }}</a>
             <h6 class="card-subtitle mb-2 text-muted">User id = {{ $wish->user_id }}</h6>
         </div>
-    </div>
+    </div> --}}
+    <wish-component v-bind:wishname="'{{ $wish->wishname }}'" v-bind:wishtext="'{{ $wish->wishtext }}'" v-bind:wishlink="'{{ $wish->wishlink }}'" v-bind:username="'{{ $wish->user_id }}'"></wish-component>
 @endforeach
 <div class="container-fluid" style="margin-top: 4rem">
     <div role="tabpanel" class="tab-pane mt-4" id="wishes">
@@ -48,7 +49,7 @@
     <div >
         <h1 class="cover-heading">U bent niet ingelogd</h1>
         <p class="lead">Registreer / login om de wishes te bekijken</p>
-        <p class="lead"><a href="/register" class="btn btn-lg btn-secondary">Registreer</a></p>
+        <p class="lead"><a href="/login" class="btn btn-lg btn-secondary">Login</a><a>&nbsp;&nbsp;</a><a href="/register" class="btn btn-lg btn-secondary">Registreer</a></p>
     </div>
 </main>
 @endif

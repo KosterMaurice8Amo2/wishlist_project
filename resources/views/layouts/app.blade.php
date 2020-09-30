@@ -21,8 +21,8 @@
     <link href="{{ asset('css/main.css') }}" rel="stylesheet">
 </head>
 <body class="text-center bg-dark bg-dark-shadow">
-    <div id="app" style="height: 100vh">
-        <div class="cover-container d-flex w-50 h-100 p-3 mx-auto flex-column">
+    <div id="app">
+        <div class="cover-container d-flex w-50 min-vh-100 p-3 mx-auto flex-column" >
         {{-- <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
@@ -82,13 +82,15 @@
             <a class="nav-link text-white" href="/">Home</a>
             <a class="nav-link text-white" href="/wishes">Wish</a>
             <a class="nav-link text-primary" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"> {{ __('Logout') }}</a>
-          </nav>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                @csrf
+            </form>
+        </nav>
+          
         </div>
       </header>
 
-        <form id="logout-form" action="{{ route('logout') }}" method="POST">
-            @csrf
-        </form>
+        
     @else
     <header-component v-bind:username="'Wishlist'"></header-component>
     @endif
