@@ -22,4 +22,17 @@ class wishes extends Model
     public function addWishes($post) {
         DB::table('wishes')->insert($post);
     }
+
+    public function updateWishes($post) {
+
+        DB::table('wishes')->where('id', $post['id'])->update([
+            'wishname' => $post['wishname'],
+            'wishtext' => $post['wishtext'],
+            'wishlink' => $post['wishlink'],
+            ]);
+    }
+
+    public function deleteWishes($post) {
+        DB::table('wishes')->where('id', $post['id'])->delete();
+    }
 }

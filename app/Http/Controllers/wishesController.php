@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\wishes;
+use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
@@ -15,6 +16,9 @@ class wishesController extends Controller
 {
 
     public function addWish(Request $request) {
+        $wishname = "";
+        $wishtext = "";
+        $wishlink = "";
 
         $userid = Auth::id();
         $wishname = $request->input('wishname');
@@ -27,13 +31,15 @@ class wishesController extends Controller
         $wish->addWishes($data);
 
         $wishes = wishes::getAllWishes();
-        return view('wishes')->with("wishes", $wishes);
+        $users = User::getAllUsers();
+        return view('wishes')->with("users", $users)->with("wishes", $wishes);
 
     }
 
     public function indexWishes(){
+        $users = User::getAllUsers();
         $wishes = wishes::getAllWishes();
-        return view('wishes')->with("wishes", $wishes);
+        return view('wishes')->with("users", $users)->with("wishes", $wishes);
     }
 
 }

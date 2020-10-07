@@ -4,20 +4,16 @@
 
 
 @if (!empty(Auth::id()))
-
-@foreach($wishes as $wish)
-    {{-- <div class="card mb-3">
-        <div class="card-body">
-            <h5 class="card-title">{{ $wish->wishname }}</h5>
-            <h6 class="card-subtitle mb-2 text-muted">{{ $wish->wishtext }}</h6>
-            <a href="{!! $wish->wishlink !!}" class="card-text">{{ $wish->wishlink }}</a>
-            <h6 class="card-subtitle mb-2 text-muted">User id = {{ $wish->user_id }}</h6>
-        </div>
-    </div> --}}
-    <wish-component v-bind:wishname="'{{ $wish->wishname }}'" v-bind:wishtext="'{{ $wish->wishtext }}'" v-bind:wishlink="'{{ $wish->wishlink }}'" v-bind:username="'{{ $wish->user_id }}'"></wish-component>
-@endforeach
-<div class="container-fluid" style="margin-top: 4rem">
-    <div role="tabpanel" class="tab-pane mt-4" id="wishes">
+    @foreach($wishes as $wish)
+        @foreach($users as $user)
+            @if ($wish->user_id == $user->id);
+                <wish-component v-bind:wishname="'{{ $wish->wishname }}'" v-bind:wishtext="'{{ $wish->wishtext }}'" v-bind:wishlink="'{{ $wish->wishlink }}'" v-bind:username="'{{ $user->name }}'" v-bind:editable="false"></wish-component>
+            @endif
+        @endforeach
+    @endforeach
+<div class="container-fluid mb-4" style="margin-top: 4rem">
+    <hr class="bg-light">
+    <div role="tabpanel" class="tab-pane mt-4 " id="wishes">
         <form method="POST" enctype="multipart/form-data">
             @csrf
             <div class="input-group mb-3">
@@ -40,7 +36,7 @@
                 <input type="text" class="form-control" name="wishlink" aria-label="Sizing example input"
                        aria-describedby="inputGroup-sizing-default">
             </div>
-            <button type="submit" name="submit-wish" value="submit-wish" class="btn btn-primary mt-4">Voeg wish toe</button>
+            <button type="submit" name="submit-wish" value="submit-wish" class="btn btn-primary mt-4 text-white">Voeg wish toe</button>
         </form>
     </div>
 </div>

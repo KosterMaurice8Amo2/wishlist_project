@@ -2073,12 +2073,69 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
+    id: Number,
     wishname: String,
     wishtext: String,
     wishlink: String,
-    username: String
+    userid: Number,
+    username: String,
+    editable: Boolean
   },
   mounted: function mounted() {
     console.log("Component mounted.");
@@ -40314,24 +40371,152 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "card mb-3" }, [
-    _c("div", { staticClass: "card-body" }, [
-      _c("h5", { staticClass: "card-title" }, [_vm._v(_vm._s(_vm.wishname))]),
-      _vm._v(" "),
-      _c("h6", { staticClass: "card-subtitle mb-2 text-muted" }, [
-        _vm._v(_vm._s(_vm.wishtext))
-      ]),
-      _vm._v(" "),
-      _c("a", { staticClass: "card-text", attrs: { href: _vm.wishlink } }, [
-        _vm._v("klik hier voor de link")
-      ]),
-      _vm._v(" "),
-      _c("h6", { staticClass: "card-subtitle mb-2 text-muted" }, [
-        _vm._v("User id = " + _vm._s(_vm.username))
-      ])
-    ])
+    !_vm.editable
+      ? _c("div", [
+          _c("div", { staticClass: "card-header" }, [
+            _vm._v("\n      " + _vm._s(_vm.wishname) + "\n    ")
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-body" }, [
+            _c("h6", { staticClass: "=mb-2 card-text" }, [
+              _vm._v(_vm._s(_vm.wishtext))
+            ]),
+            _vm._v(" "),
+            _c(
+              "a",
+              { staticClass: "btn btn-primary", attrs: { href: _vm.wishlink } },
+              [_vm._v("klik hier voor de link")]
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-footer text-muted" }, [
+            _vm._v("Username: " + _vm._s(_vm.username))
+          ])
+        ])
+      : _vm._e(),
+    _vm._v(" "),
+    _vm.editable
+      ? _c("div", [
+          _c("div", { staticClass: "card-header" }, [
+            _c("div", { staticClass: "input-group mb-3" }, [
+              _vm._m(0),
+              _vm._v(" "),
+              _c("input", {
+                staticClass: "form-control",
+                attrs: {
+                  type: "text",
+                  name: "wishname",
+                  "aria-label": _vm.wishname
+                },
+                domProps: { value: _vm.wishname }
+              })
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-body" }, [
+            _c("div", { staticClass: "input-group" }, [
+              _vm._m(1),
+              _vm._v(" "),
+              _c("textarea", {
+                staticClass: "form-control",
+                attrs: { name: "wishtext", "aria-label": "With textarea" },
+                domProps: { value: _vm.wishtext }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "input-group mb-3 mt-3" }, [
+              _vm._m(2),
+              _vm._v(" "),
+              _c("input", {
+                staticClass: "form-control",
+                attrs: {
+                  type: "text",
+                  name: "wishlink",
+                  "aria-label": _vm.wishlink
+                },
+                domProps: { value: _vm.wishlink }
+              })
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-footer text-muted" }, [
+            _c("span", [_vm._v("Username: " + _vm._s(_vm.username))])
+          ])
+        ])
+      : _vm._e(),
+    _vm._v(" "),
+    _vm.editable
+      ? _c(
+          "div",
+          {
+            staticClass: "btn-group",
+            attrs: { role: "group", "aria-label": "Basic example" }
+          },
+          [
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-primary text-white",
+                attrs: {
+                  type: "submit",
+                  name: "submit-edit-wish",
+                  value: _vm.id
+                }
+              },
+              [_vm._v("Update")]
+            ),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-danger text-white",
+                attrs: {
+                  type: "submit",
+                  name: "submit-delete-wish",
+                  value: _vm.id
+                }
+              },
+              [_vm._v("Delete")]
+            )
+          ]
+        )
+      : _vm._e()
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "input-group-prepend" }, [
+      _c(
+        "span",
+        { staticClass: "input-group-text", attrs: { id: "basic-addon1" } },
+        [_vm._v("Wish titel")]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "input-group-prepend" }, [
+      _c("span", { staticClass: "input-group-text" }, [_vm._v("Wish tekst")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "input-group-prepend" }, [
+      _c(
+        "span",
+        { staticClass: "input-group-text", attrs: { id: "basic-addon1" } },
+        [_vm._v("Wish link")]
+      )
+    ])
+  }
+]
 render._withStripped = true
 
 
