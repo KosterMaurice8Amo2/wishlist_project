@@ -2,12 +2,24 @@
 
 @section('content')
 
+@if (!empty($error))
+    <h4 class="text-white mb-1 mt-1">{{ $error }} <span class="badge badge-danger">Error</span></h4>
+@endif
+
+@php
+    $currentUser = Auth::user();
+@endphp
 
 @if (!empty(Auth::id()))
     @foreach($wishes as $wish)
         @foreach($users as $user)
-            @if ($wish->user_id == $user->id);
-                <wish-component v-bind:wishname="'{{ $wish->wishname }}'" v-bind:wishtext="'{{ $wish->wishtext }}'" v-bind:wishlink="'{{ $wish->wishlink }}'" v-bind:username="'{{ $user->name }}'" v-bind:editable="false"></wish-component>
+            @if ($wish->user_id == Auth::id())
+                @if ($wish->user_id == $user->id)
+                    <form method="POST" enctype="multipart/form-data">
+                        @csrf
+                        <wish-component v-bind:id="{{ $wish->id }}" v-bind:wishname="'{{ $wish->wishname }}'" v-bind:wishtext="'{{ $wish->wishtext }}'" v-bind:wishlink="'{{ $wish->wishlink }}'" v-bind:wishprice="'{{ $wish->wishprice }}'" v-bind:wishimage="'{{ $wish->wishimage }}'" v-bind:username="'{{ $user->name }}'" v-bind:editable="true"></wish-component>
+                    </form>
+                @endif
             @endif
         @endforeach
     @endforeach
@@ -34,6 +46,20 @@
                     <span class="input-group-text" id="inputGroup-sizing-default">Wish link</span>
                 </div>
                 <input type="text" class="form-control" name="wishlink" aria-label="Sizing example input"
+                       aria-describedby="inputGroup-sizing-default">
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-default">Wish price</span>
+                </div>
+                <input type="text" class="form-control" name="wishprice" aria-label="Sizing example input"
+                       aria-describedby="inputGroup-sizing-default">
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-default">Wish image</span>
+                </div>
+                <input type="file" class="form-control" name="wishimage" aria-label="Sizing example input"
                        aria-describedby="inputGroup-sizing-default">
             </div>
             <button type="submit" name="submit-wish" value="submit-wish" class="btn btn-primary mt-4 text-white">Voeg wish toe</button>

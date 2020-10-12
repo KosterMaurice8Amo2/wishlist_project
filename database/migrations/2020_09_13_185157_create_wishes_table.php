@@ -16,9 +16,11 @@ class CreateWishesTable extends Migration
         Schema::create('wishes', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('user_id')->nullable()->unsigned();
-            $table->text('wishname');
-            $table->longText('wishtext');
-            $table->longText('wishlink');
+            $table->string('wishname');
+            $table->string('wishtext');
+            $table->string('wishlink');
+            $table->string('wishprice');
+            $table->string('wishimage');
             $table->timestamp('created_at');
         });
     }

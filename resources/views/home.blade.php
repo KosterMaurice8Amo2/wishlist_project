@@ -3,12 +3,15 @@
 @section('content')
     <main role="main" class="inner cover text-white">
         <div >
-            <h1 class="cover-heading">Cover your page.</h1>
-            <p class="lead">Cover is a one-page template for building simple and beautiful home pages. Download, edit the text, and add your own fullscreen background photo to make it your own.</p>
-            <p class="lead"><a href="#" class="btn btn-lg btn-secondary">Learn more</a></p>
+            <h2 class="cover-heading mb-2">Zie hier de wensen van andere gebruikers:</h2>
+            @foreach($wishes as $wish)
+                @foreach($users as $user)
+                    @if ($wish->user_id == $user->id)
+                        <wish-component v-bind:wishname="'{{ $wish->wishname }}'" v-bind:wishtext="'{{ $wish->wishtext }}'" v-bind:wishlink="'{{ $wish->wishlink }}'" v-bind:wishprice="'{{ $wish->wishprice }}'" v-bind:wishimage="'{{ asset('storage/images/'.$wish->wishimage) }}'" v-bind:username="'{{ $user->name }}'" v-bind:editable="false"></wish-component>
+                    @endif
+                @endforeach
+            @endforeach
         </div>
-
-        
     </main>
  
 @endsection

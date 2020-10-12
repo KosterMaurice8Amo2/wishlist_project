@@ -6,12 +6,9 @@
     @endphp
     @if (!empty(Auth::id()))
         @if ($currentUser->permission == "admin")
-            <div>
-                
-            </div>
             @foreach($users as $user)
 
-            <form method="POST">
+            <form method="POST" enctype="multipart/form-data">
                 @csrf
                 <user-component v-bind:username="'{{ $user->name }}'" v-bind:permission="'{{ $user->permission }}'" v-bind:id="{{ $user->id }}"></user-component> 
             </form>
@@ -25,9 +22,9 @@
             @foreach($wishes as $wish)
                 @foreach($users as $user)
                     @if ($wish->user_id == $user->id);
-                    <form method="POST">
+                    <form method="POST" enctype="multipart/form-data">
                         @csrf
-                        <wish-component v-bind:id="{{ $wish->id }}" v-bind:wishname="'{{ $wish->wishname }}'" v-bind:wishtext="'{{ $wish->wishtext }}'" v-bind:wishlink="'{{ $wish->wishlink }}'" v-bind:username="'{{ $user->name }}'" v-bind:editable="true"></wish-component>
+                        <wish-component v-bind:id="{{ $wish->id }}" v-bind:wishname="'{{ $wish->wishname }}'" v-bind:wishtext="'{{ $wish->wishtext }}'" v-bind:wishlink="'{{ $wish->wishlink }}'" v-bind:wishprice="'{{ $wish->wishprice }}'" v-bind:wishimage="'{{ $wish->wishimage }}'" v-bind:username="'{{ $user->name }}'" v-bind:editable="true"></wish-component>
                     </form>
                     @endif
                 @endforeach

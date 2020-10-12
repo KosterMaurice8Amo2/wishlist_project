@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/', 'HomeController@index');
 
 Auth::routes();
 
@@ -21,7 +19,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/wishes', 'wishesController@indexWishes');
 
-Route::post('wishes', 'wishesController@addWish');
+Route::post('wishes', 'wishesController@post');
 
 Route::get('/admin', 'usersController@indexPage')->name('admin');
 

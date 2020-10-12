@@ -2127,12 +2127,60 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     id: Number,
     wishname: String,
     wishtext: String,
     wishlink: String,
+    wishprice: String,
+    wishimage: String,
     userid: Number,
     username: String,
     editable: Boolean
@@ -40374,19 +40422,28 @@ var render = function() {
     !_vm.editable
       ? _c("div", [
           _c("div", { staticClass: "card-header" }, [
-            _vm._v("\n      " + _vm._s(_vm.wishname) + "\n    ")
+            _c("h4", { staticClass: "text-dark" }, [
+              _vm._v(_vm._s(_vm.wishname))
+            ])
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "card-body" }, [
-            _c("h6", { staticClass: "=mb-2 card-text" }, [
+            _c("h6", { staticClass: "=mb-2 card-text text-dark" }, [
               _vm._v(_vm._s(_vm.wishtext))
             ]),
             _vm._v(" "),
             _c(
               "a",
               { staticClass: "btn btn-primary", attrs: { href: _vm.wishlink } },
-              [_vm._v("klik hier voor de link")]
-            )
+              [_vm._v(_vm._s(_vm.wishprice))]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "text-center mt-3" }, [
+              _c("img", {
+                staticClass: "rounded img-fluid",
+                attrs: { src: _vm.wishimage, alt: "..." }
+              })
+            ])
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "card-footer text-muted" }, [
@@ -40406,7 +40463,7 @@ var render = function() {
                 attrs: {
                   type: "text",
                   name: "wishname",
-                  "aria-label": _vm.wishname
+                  "aria-label": "Basic example"
                 },
                 domProps: { value: _vm.wishname }
               })
@@ -40432,9 +40489,41 @@ var render = function() {
                 attrs: {
                   type: "text",
                   name: "wishlink",
-                  "aria-label": _vm.wishlink
+                  "aria-label": "Basic example"
                 },
                 domProps: { value: _vm.wishlink }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "input-group mb-3 mt-3" }, [
+              _vm._m(3),
+              _vm._v(" "),
+              _c("input", {
+                staticClass: "form-control",
+                attrs: {
+                  type: "text",
+                  name: "wishprice",
+                  "aria-label": "Basic example"
+                },
+                domProps: { value: _vm.wishprice }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "input-group mb-3 mt-3" }, [
+              _vm._m(4),
+              _vm._v(" "),
+              _c("input", {
+                staticClass: "form-control",
+                attrs: {
+                  type: "file",
+                  name: "wishimage",
+                  "aria-label": "Basic example"
+                }
+              }),
+              _vm._v(" "),
+              _c("input", {
+                attrs: { type: "hidden", name: "oldwishimage" },
+                domProps: { value: _vm.wishimage }
               })
             ])
           ]),
@@ -40463,7 +40552,7 @@ var render = function() {
                   value: _vm.id
                 }
               },
-              [_vm._v("Update")]
+              [_vm._v("\n      Update\n    ")]
             ),
             _vm._v(" "),
             _c(
@@ -40476,7 +40565,7 @@ var render = function() {
                   value: _vm.id
                 }
               },
-              [_vm._v("Delete")]
+              [_vm._v("\n      Delete\n    ")]
             )
           ]
         )
@@ -40513,6 +40602,30 @@ var staticRenderFns = [
         "span",
         { staticClass: "input-group-text", attrs: { id: "basic-addon1" } },
         [_vm._v("Wish link")]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "input-group-prepend" }, [
+      _c(
+        "span",
+        { staticClass: "input-group-text", attrs: { id: "basic-addon1" } },
+        [_vm._v("Wish price")]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "input-group-prepend" }, [
+      _c(
+        "span",
+        { staticClass: "input-group-text", attrs: { id: "basic-addon1" } },
+        [_vm._v("Wish image")]
       )
     ])
   }
