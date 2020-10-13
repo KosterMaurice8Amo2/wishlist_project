@@ -9,7 +9,6 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 use Symfony\Component\Console\Helper\Table;
-use Illuminate\Support\Facades\Auth;
 use DateTime;
 
 class HomeController extends Controller
@@ -19,10 +18,6 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
 
     /**
      * Show the application dashboard.
