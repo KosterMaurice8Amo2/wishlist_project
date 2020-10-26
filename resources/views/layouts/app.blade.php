@@ -81,10 +81,12 @@
           <nav class="nav nav-masthead justify-content-center">
             <a class="nav-link text-white" href="/">Home</a>
             <a class="nav-link text-white" href="/wishes">Wish</a>
+            <div>
             <a class="nav-link text-primary" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"> {{ __('Logout') }}</a>
             <form id="logout-form" action="{{ route('logout') }}" method="POST">
                 @csrf
             </form>
+            </div>
         </nav>
           
         </div>
